@@ -61,7 +61,7 @@ function Unlock-File {
     }
 
     "Getting handles for '$file'"
-    $handles = Start-Process2 $handleExe -argumentList "`"$file`" -nobanner -accepteula" -dontWait
+    $handles = Start-Process $handleExe -argumentList "`"$file`" -nobanner -accepteula" -Wait
     if ($handles) {
         $handles -split "`n" | ? { $_ } | % {
             Write-Verbose $_
